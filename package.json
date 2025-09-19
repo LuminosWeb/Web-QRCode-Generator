@@ -1,0 +1,122 @@
+{
+  "name": "qr-generator-violet-dark",
+  "version": "1.1.0",
+  "description": "Générateur de QR Code simple et élégant avec un design violet foncé",
+  "keywords": [
+    "qr-code",
+    "generator",
+    "violet",
+    "dark-theme",
+    "responsive",
+    "javascript",
+    "html5",
+    "css3"
+  ],
+  "homepage": "https://qrcode.luminosweb.com",
+  "author": {
+    "name": "Luminosweb",
+    "email": "contact@luminosweb.com",
+    "url": "https://luminosweb.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luminosweb/qrcode.luminosweb.com"
+  },
+  "bugs": {
+    "url": "https://github.com/luminosweb/qrcode.luminosweb.com/issues"
+  },
+  "main": "index.html",
+  "files": [
+    "index.html",
+    "styles.css",
+    "script.js",
+    "README.md"
+  ],
+  "scripts": {
+    "start": "python -m http.server 3000",
+    "serve": "npx serve .",
+    "lint": "eslint script.js",
+    "validate-html": "html-validate index.html",
+    "validate-css": "stylelint styles.css"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "html-validate": "^7.0.0",
+    "stylelint": "^15.0.0",
+    "serve": "^14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "preferGlobal": false,
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "config": {
+    "port": 3000,
+    "host": "localhost"
+  },
+  "metadata": {
+    "title": "Générateur QR — Violet Dark",
+    "description": "Application web pour générer des codes QR avec un design moderne violet foncé. Support PNG/SVG, personnalisation complète et interface responsive.",
+    "tags": [
+      "qr-code",
+      "generator",
+      "web-app",
+      "violet-theme",
+      "responsive-design",
+      "accessibility",
+      "modern-ui"
+    ],
+    "features": [
+      "Génération QR codes PNG/SVG",
+      "Interface responsive",
+      "Thème violet foncé élégant",
+      "Accessibilité optimisée",
+      "Copie presse-papier",
+      "Téléchargement direct",
+      "Paramètres personnalisables"
+    ],
+    "technologies": [
+      "HTML5",
+      "CSS3",
+      "JavaScript ES6+",
+      "Fetch API",
+      "Clipboard API",
+      "CSS Variables",
+      "CSS Grid",
+      "Flexbox"
+    ],
+    "compatibility": {
+      "browsers": {
+        "chrome": "88+",
+        "firefox": "85+",
+        "safari": "14+",
+        "edge": "88+"
+      },
+      "mobile": {
+        "ios": "14+",
+        "android": "10+"
+      }
+    },
+    "performance": {
+      "size": {
+        "html": "~4KB",
+        "css": "~12KB",
+        "js": "~18KB",
+        "total": "~34KB"
+      },
+      "loadTime": "<100ms",
+      "responsive": true,
+      "accessibility": "WCAG 2.1 AA"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+/* ========================================
+   Design responsive
+   ======================================== */
+@media (max-width: 880px) {
+  .app {
+    gap: var(--spacing-lg);
+    background: transparent;
+  }
+
+  .app-wrapper {
+    flex-direction: column;
+  }
+  
+  .preview {
+    order: -1;
+    min-width: 0px;
+  }
+  
+  .qr-container {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .form-group--small {
+    width: 100%;
+  }
+
+
+  footer {
+    text-align: start !important;
+  }
+
+  body {
+      background: var(--color-bg) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: var(--spacing-lg);
+  }
+  
+  .app {
+    padding: var(--spacing-lg);
+  }
+
+  .header-title {
+    width: 100%;
+  }
+
+  .luminos-text {
+    text-align: center;
+  }
+  
+  header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-sm);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .qr-container {
+    max-width: 100%;
+  }
+
+  .preview-meta {
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+}

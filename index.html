@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Générateur de QR Code simple et élégant - Créez vos codes QR en PNG ou SVG">
+  <meta name="keywords" content="QR code, générateur, violet, dark, luminosweb">
+  <title>Générateur de Code QR Simple et Avancée — Luminos Web</title>
+  <link rel="stylesheet" href="/internal/css/styles.css">
+  <link rel="stylesheet" href="/internal/css/breakpoints.css">
+</head>
+<body>
+  <div class="app" role="application" aria-label="Générateur de QR Code">
+    <header>
+      <a href="http://luminosweb.com" title="Ouvrir luminosweb.com dans un nouvel onglet" target="_blank" rel="noopener noreferrer">
+        <img src="/assets/logo.png" alt="Logo LuminosWeb" class="header-logo" draggable="false"/>
+        </a>
+      <div>
+        <div class="header-title">
+            <p class="luminos-text">de Luminos Web</p>
+            <h1>Générateur de QR</h1>
+        </div>
+        <p class="lead">Tape ton lien ou texte, clique sur Générer. Télécharge ou copie le QR Code.</p>
+      </div>
+    </header>
+
+    <div class="app-wrapper">
+        <main class="controls">
+            <form id="qr-form" novalidate>
+                <div class="form-group">
+                    <label for="data">Texte / URL</label>
+                    <textarea 
+                        id="data" 
+                        name="data"
+                        placeholder="https://example.com / Texte à encoder"
+                        aria-describedby="data-help"
+                        required>
+                        https://example.com
+                    </textarea>
+                <div id="data-help" class="sr-only">Entrez le texte ou l'URL que vous souhaitez encoder dans le QR code</div>
+                </div>
+
+                <div class="form-row">
+                <div class="form-group form-group--grow">
+                    <label for="size">
+                    Taille (<span class="value-display" id="sizeVal" aria-live="polite">300</span>px)
+                    </label>
+                    <input 
+                    id="size" 
+                    name="size"
+                    type="range" 
+                    min="120" 
+                    max="800" 
+                    value="300"
+                    aria-describedby="size-help">
+                    <div id="size-help" class="sr-only">Ajustez la taille du QR code de 120 à 800 pixels</div>
+                </div>
+                
+                <div class="form-group form-group--small">
+                    <label id="format-label">Format</label>
+                    <div class="c-select" data-select id="format" role="listbox" aria-labelledby="format-label" tabindex="0" aria-activedescendant="format-opt-png">
+                    <input type="hidden" name="format" id="formatValue" value="png" />
+                    <div class="c-select__button" data-select-trigger aria-haspopup="listbox" aria-expanded="false">
+                        <span class="c-select__value" data-select-value>PNG</span>
+                        <span class="c-select__icon" aria-hidden="true">▾</span>
+                    </div>
+                    <ul class="c-select__list" role="presentation">
+                        <li id="format-opt-png" role="option" data-value="png" aria-selected="true">PNG</li>
+                        <li id="format-opt-svg" role="option" data-value="svg" aria-selected="false">SVG</li>
+                    </ul>
+                    </div>
+                    <div id="format-help" class="sr-only">Choisissez le format de sortie du QR code</div>
+                </div>
+                </div>
+
+                <div class="form-row">
+                <div class="form-group form-group--grow">
+                    <label id="ecc-label">Correction d'erreur <button type="button" class="info-icon" id="eccInfo" aria-label="Informations sur les niveaux de correction" tabindex="0">i</button></label>
+                    <div class="c-select" data-select id="ecc" role="listbox" aria-labelledby="ecc-label" tabindex="0" aria-activedescendant="ecc-opt-M">
+                    <input type="hidden" name="ecc" id="eccValue" value="M" />
+                    <div class="c-select__button" data-select-trigger aria-haspopup="listbox" aria-expanded="false">
+                        <span class="c-select__value" data-select-value>M (moyen)</span>
+                        <span class="c-select__icon" aria-hidden="true">▾</span>
+                    </div>
+                    <ul class="c-select__list" role="presentation">
+                        <li id="ecc-opt-L" role="option" data-value="L" aria-selected="false">L (bas)</li>
+                        <li id="ecc-opt-M" role="option" data-value="M" aria-selected="true">M (moyen)</li>
+                        <li id="ecc-opt-Q" role="option" data-value="Q" aria-selected="false">Q (haut)</li>
+                        <li id="ecc-opt-H" role="option" data-value="H" aria-selected="false">H (très haut)</li>
+                    </ul>
+                    </div>
+                    <div id="ecc-help" class="sr-only">Niveau de correction d'erreur du QR code</div>
+                </div>
+                
+                <div class="form-group form-group--small">
+                    <label for="margin">Marge</label>
+                    <input 
+                    id="margin" 
+                    name="margin"
+                    type="number" 
+                    value="4" 
+                    min="0" 
+                    max="40"
+                    aria-describedby="margin-help">
+                    <div id="margin-help" class="sr-only">Marge autour du QR code en pixels</div>
+                </div>
+                </div>
+
+                <div class="actions">
+                <button type="submit" id="gen" class="btn btn--primary">
+                    <span class="btn__text">Générer le code</span>
+                </button>
+                <button type="button" id="download" class="btn btn--secondary" disabled>
+                    <span class="btn__text">Télécharger</span>
+                </button>
+                <button type="button" id="copy" class="btn btn--secondary" disabled>
+                    <span class="btn__text">Copier l'image</span>
+                </button>
+                </div>
+
+                <div class="help-text">
+                <strong>Astuce :</strong> Tu peux choisir SVG pour une image nette à n'importe quelle taille. mais tu ne pourras pas choisir la marge.
+                </div>
+            </form>
+        </main>
+
+        <aside class="preview" aria-label="Aperçu du QR Code">
+            <div class="qr-container">
+                <img 
+                id="qrImg" 
+                class="qr-image" 
+                alt="Aperçu du QR Code généré" 
+                src="" 
+                role="img" data-raster>
+                <div id="qrSvgWrap" class="qr-svg-wrap" aria-hidden="true" data-vector></div>
+                <div id="qr-loading" class="loading-state" aria-hidden="true">
+                <div class="loading-spinner"></div>
+                <span>Génération...</span>
+                </div>
+            </div>
+            
+            <div class="preview-meta">
+                <div class="meta-item">
+                <span class="meta-label-title">Aperçu</span>
+                </div>
+                <div class="meta-item">
+                <span class="meta-label">Format: <span id="fmtLabel">PNG</span></span>
+                </div>
+            </div>
+
+            <div class="preview-meta">
+                <div class="meta-item">
+                    <span class="meta-label-title">Contenu généré</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" id="contentPreview" title="Aucun contenu généré" aria-live="polite" aria-atomic="true">(vide)</span>
+                </div>
+            </div>
+            
+            <div class="preview-actions">
+                <button id="openNew" class="btn btn--secondary btn--full" disabled>
+                <span class="btn__text">Ouvrir l'image</span>
+                </button>
+                <button id="reset" class="btn btn--secondary">
+                <span class="btn__text">Réinitialiser</span>
+                </button>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+      <p style="color: white;">Crée & Hébergée par <a href="https://github.com/luminosweb" target="_blank" class="link">LuminosWeb.com</a></p>
+    </footer>
+  </div>
+
+  <!-- Messages d'état pour l'accessibilité -->
+  <div id="status-messages" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="./config.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+  <script src="internal/javascript/class/CustomSelect.js"></script>
+  <script src="internal/javascript/class/QRGenerator.js"></script>
+  <script src="internal/javascript/main.js"></script>
+</body>
+</html>
