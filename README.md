@@ -220,8 +220,7 @@ Pour toute question, problème ou suggestion :
 
 - **Email** : [contact@luminosweb.com](mailto:contact@luminosweb.com)
 - **Website** : [luminosweb.com](https://luminosweb.com)
-- **GitHub Issues** : [Signaler un bug](https://github.com/luminosweb/qrcode.luminosweb.com/issues)
-- **GitHub Discussions** : [Forum communautaire](https://github.com/luminosweb/qrcode.luminosweb.com/discussions)
+- **GitHub Issues** : [Signaler un bug](https://github.com/LuminosWeb/Web-QRCode-Generator/issues)
 
 ## 🔄 Changelog
 
@@ -250,3 +249,4 @@ Pour toute question, problème ou suggestion :
 *Générateur QR Code - Version 1.1.0*
 
 </div>
+
